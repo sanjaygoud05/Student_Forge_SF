@@ -17,7 +17,7 @@ export default function AboutPage() {
             Our Foundation
           </div>
           <h1 className="text-4xl lg:text-6xl font-normal text-[#1a3646] mb-6 tracking-tight leading-tight">
-            Our Mission & <span className="text-white">Student Forge</span>.
+            Our Mission & <span className="text-white">Vision</span>.
           </h1>
           <p className="text-base lg:text-xl text-[#1a3646] opacity-80 max-w-2xl leading-relaxed">
             Student Forge is a dedicated national portal and initiative designed to bridge the gap between academic foundations and professional success.
@@ -30,8 +30,8 @@ export default function AboutPage() {
         <div className="w-full max-w-[1200px] grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <div className="relative aspect-square lg:aspect-[4/5] rounded-[48px] overflow-hidden shadow-2xl border-8 border-white">
             <Image
-              src="/Users/rishirohankalapala/.gemini/antigravity/brain/6ece386d-fb22-4da4-bdf1-71b6abb496fa/about_vision_image_1776789119148.png"
-              alt="Student Forge Innovation Hub"
+              src="/mission-students.png"
+              alt="Student Forge Mission"
               fill
               className="object-cover"
             />
@@ -45,9 +45,12 @@ export default function AboutPage() {
             </div>
             <div className="flex flex-col gap-6">
               <h2 className="text-4xl font-normal text-[#1a3646] tracking-tight decoration-[#fbb03b] decoration-4 underline-offset-8">Our Mission</h2>
-              <p className="text-lg text-gray-600 leading-relaxed font-normal">
-                By establishing strategic 'Nodes' across national universities, Student Forge provides a standardized path for technical excellence. We bridge the gap between classroom learning and industry reality through immersive bootcamps, direct mentorship, and project-based incubation.
-              </p>
+              <div className="relative">
+                <div className="absolute -left-4 top-0 bottom-0 w-1 bg-[#fbb03b] rounded-full"></div>
+                <p className="text-xl text-gray-700 leading-relaxed font-medium pl-4 py-2 bg-gray-50/50 rounded-r-xl border border-gray-100/50 shadow-sm">
+                  We are committed to bridging the gap between academic theory and industry reality. By providing a platform for mentorship and growth, we ensure every student has the opportunity to become a true innovator.
+                </p>
+              </div>
             </div>
           </div>
         </div>

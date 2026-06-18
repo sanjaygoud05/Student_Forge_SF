@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import Hero from "@/components/Hero";
 import AboutSection from "@/components/AboutSection";
 import PartnersSection from "@/components/PartnersSection";
+import AchievementsSection from "@/components/AchievementsSection";
 import UpdateSection from "@/components/UpdateSection";
 import ImpactSection from "@/components/ImpactSection";
 import CollegePartnersSection from "@/components/CollegePartnersSection";
@@ -29,6 +30,7 @@ export default function Home() {
       <Hero />
       <AboutSection />
       <PartnersSection />
+      <AchievementsSection />
       <UpdateSection />
       <ImpactSection />
 

@@ -15,6 +15,13 @@
   .animate-scroll-right {
     animation: scroll-right 60s linear infinite;
   }
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 :root {

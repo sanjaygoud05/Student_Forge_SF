@@ -25,7 +25,7 @@ export default function UpdateSection() {
             href="https://platform.studentforge.in/intern/signup"
             className="px-10 py-3 bg-[#2d414e] text-white rounded-full text-xs font-normal hover:bg-[#1a3646] transition-all"
           >
-            Register Now
+            Explore Now
           </Link>
         </div>
       </div>

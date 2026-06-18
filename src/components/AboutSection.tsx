@@ -8,14 +8,11 @@ export default function AboutSection() {
         {/* Left Content */}
         <div className="flex-1 flex flex-col items-start text-white">
           <div className="bg-[#8ecfcb] text-[#1a3646] px-4 py-1 rounded-md text-[10px] font-normal mb-8 uppercase tracking-wider">
-            Our Mission
+            Our Motto
           </div>
-          <h2 className="text-4xl lg:text-5xl font-normal leading-tight mb-6 tracking-tight">
-            Nurturing Expertise for the Next Generation.
+          <h2 className="text-xl lg:text-2xl font-light leading-relaxed mb-10 opacity-85 max-w-md">
+            No matter how dark the path is, Student Forge stands beside students at every step toward their dreams.
           </h2>
-          <p className="text-base font-normal opacity-70 leading-relaxed mb-10 max-w-xl">
-            We are committed to bridging the gap between academic theory and industry reality. By providing a platform for mentorship and growth, we ensure every student has the opportunity to become a true innovator.
-          </p>
           <div className="flex items-center gap-4">
             <Link 
               href="/about" 
@@ -35,12 +32,12 @@ export default function AboutSection() {
         {/* Right Image - Reduced Border Radius */}
         <div className="flex-1 w-full aspect-[4/3] relative rounded-[16px] overflow-hidden">
           <Image 
-            src="/about-image.png"
+            src="/our-mission.jpeg"
             alt="Student Forge Community Event"
             fill
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             priority
-            className="object-cover"
+            className="object-cover scale-105"
           />
         </div>
       </div>
