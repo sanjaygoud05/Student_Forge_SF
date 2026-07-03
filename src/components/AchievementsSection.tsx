@@ -84,7 +84,7 @@ export default function AchievementsSection() {
                 <img
                   src={card.src}
                   alt={card.title}
-                  className={`w-full h-full object-cover ${index === 2 ? 'object-top' : ''}`}
+                  className={`w-full h-full object-cover ${index === 1 ? 'object-top' : index === 2 ? 'object-top' : ''}`}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </div>
@@ -132,7 +132,7 @@ export default function AchievementsSection() {
                     <img
                       src={active.src}
                       alt={active.title}
-                      className="w-full h-full object-cover"
+                      className={`w-full h-full ${active.title.includes("CMRIT") ? 'object-contain' : 'object-cover'}`}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                     <button
@@ -151,26 +151,32 @@ export default function AchievementsSection() {
                     <h3 className="text-2xl lg:text-3xl font-bold text-[#1a3646] mb-6">{active.title}</h3>
                     <div className="mb-6">
                       <h4 className="text-lg font-semibold text-[#1a3646] mb-3 hover:text-[#fbb03b] transition-colors duration-300 cursor-default">About This Achievement</h4>
-                      <p className="text-[#1a3646]/70 leading-relaxed hover:bg-[#f8f9fa] p-2 rounded-lg transition-colors duration-300 cursor-default">{active.description}</p>
-                    </div>
-
-                    {/* Gallery */}
-                    <div>
-                      <h4 className="text-lg font-semibold text-[#1a3646] mb-3 hover:text-[#fbb03b] transition-colors duration-300 cursor-default">Gallery</h4>
-                      <div className="grid grid-cols-2 gap-3">
-                        {active.gallery.map((img, idx) => (
-                          <img
-                            key={idx}
-                            src={img}
-                            alt={`${active.title} ${idx + 1}`}
-                            className={`w-full h-40 object-cover rounded-lg hover:scale-105 transition-transform duration-300 cursor-pointer ${
-                              active.title.includes("BITS") && idx === 1 ? 'object-[top_35%]' : 
-                              active.title.includes("BITS") && idx === 3 ? 'object-[top_25%]' : ''
-                            }`}
-                          />
+                      <div className="text-[#1a3646]/70 leading-relaxed hover:bg-[#f8f9fa] p-2 rounded-lg transition-colors duration-300 cursor-default">
+                        {active.description.split('\n\n').map((paragraph, idx) => (
+                          <p key={idx} className={idx > 0 ? 'mt-4' : ''}>{paragraph}</p>
                         ))}
                       </div>
                     </div>
+
+                    {/* Gallery */}
+                    {active.gallery && active.gallery.length > 0 && (
+                      <div>
+                        <h4 className="text-lg font-semibold text-[#1a3646] mb-3 hover:text-[#fbb03b] transition-colors duration-300 cursor-default">Gallery</h4>
+                        <div className="grid grid-cols-2 gap-3">
+                          {active.gallery.map((img, idx) => (
+                            <img
+                              key={idx}
+                              src={img}
+                              alt={`${active.title} ${idx + 1}`}
+                              className={`w-full h-40 object-cover rounded-lg hover:scale-105 transition-transform duration-300 cursor-pointer ${
+                                active.title.includes("BITS") && idx === 1 ? 'object-[top_35%]' : 
+                                active.title.includes("BITS") && idx === 3 ? 'object-[top_25%]' : ''
+                              }`}
+                            />
+                          ))}
+                        </div>
+                      </div>
+                    )}
 
                     {/* Stats */}
                     {active.stats && (
@@ -231,15 +237,10 @@ const cards = [
   },
   {
     title: "Featured in CMRIT Shades 2026 Magazine",
-    shortDescription: "Student Forge was proudly featured in the CMRIT Shades 2026 college magazine under the Student Startups section, recognizing our journey, vision, and commitment to empowering students through innovation, entrepreneurship, and skill development.",
-    src: "/community-card.png",
-    description: "Student Forge was proudly featured in the CMRIT Shades 2026 college magazine under the Student Startups section, recognizing our journey, vision, and commitment to empowering students through innovation, entrepreneurship, and skill development. This feature highlights our impact on the student community and our dedication to fostering the next generation of entrepreneurs and innovators.",
-    gallery: [
-      "/community-card.png",
-      "/about-image.png",
-      "/mission-students.png",
-      "/impact-card.png",
-    ],
+    shortDescription: "Student Forge was proudly featured in the CMRIT Shades 2026 college magazine under the Student Startups section. Jashwanth Sonti, a B.Tech graduate in Artificial Intelligence & Machine Learning (2024), is a passionate young entrepreneur and mentor dedicated to transforming student careers.",
+    src: "/cmrit-card-main.jpeg",
+    description: "Student Forge was proudly featured in the CMRIT Shades 2026 college magazine under the Student Startups section. Jashwanth Sonti, a B.Tech graduate in Artificial Intelligence & Machine Learning (2024), is a passionate young entrepreneur and mentor dedicated to transforming student careers.\n\nSpark that launched Student Forge\n\nThe spark behind Student Forge came from Jashwanth Sonti's own struggle as a student. After shifting from EEE to CSE in B.Tech without any foundational knowledge, he faced constant confusion, fear, and a complete lack of guidance. There was no mentorship, no roadmap, and no structured support system to help him navigate this transition. This personal challenge made him realize that many students silently go through the same phase. That realization became the foundation for Student Forge — a platform he wished existed during his own journey.\n\nBiggest challenge as a founder\n\nOne of the biggest challenges Jashwanth faced was building something meaningful from uncertainty while carrying the responsibility of trust placed in him. After graduation, he worked in an MNC and saved his salary to fund the idea. The turning point came when his family believed in his vision and contributed their own savings. That support became both motivation and pressure — pushing him to create a platform that genuinely helps students rather than just building another startup.\n\nStay innovative in such a fast-moving industry\n\nJashwanth stays innovative by keeping Student Forge deeply connected to real student problems. The platform is built \"For Students, By Students,\" ensuring that solutions are practical, relatable, and constantly evolving. By focusing on skill-based learning, real-world projects, peer-driven mentorship, and career clarity, he ensures the platform adapts to what students actually need — not just what traditional systems offer. His innovation comes from listening, observing, and continuously improving based on student experiences.",
+    gallery: [],
     stats: [
       { value: "2026", label: "Edition" },
       { value: "CMRIT", label: "Featured In" },
