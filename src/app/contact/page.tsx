@@ -1,57 +1,222 @@
-import { Metadata } from 'next';
-import Footer from "@/components/Footer";
+"use client";
 
-export const metadata: Metadata = {
-  title: 'Contact Us | Student Forge HQ',
-  description: 'Get in touch with the Student Forge national portal team. Reach out for collaborations, institutional nodes, or technical support.',
-};
+import Footer from "@/components/Footer";
+import { useState } from "react";
+import { Mail, Phone, MapPin, Send } from "lucide-react";
 
 export default function ContactPage() {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    address: '',
+    phone: '',
+    reason: '',
+    comments: ''
+  });
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    console.log('Form submitted:', formData);
+    
+    const subject = `Contact Us Inquiry: ${formData.reason} - ${formData.name}`;
+    const body = `Name: ${formData.name}
+Email: ${formData.email}
+Address: ${formData.address}
+Phone: ${formData.phone || 'N/A'}
+Reason for Contact: ${formData.reason}
+
+Message / Comments:
+${formData.comments || 'N/A'}`;
+
+    window.location.href = `mailto:info@studentforge.in?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
+
   return (
     <main className="flex-1 bg-white">
-      <section className="relative pt-32 pb-20 px-6 bg-[#fbb03b] border-b border-[#1a3646]/10">
+      <section className="relative pt-32 pb-20 px-6 bg-[#1a3646]">
         <div className="relative z-10 w-full max-w-[1200px] mx-auto">
-          <h1 className="text-4xl lg:text-5xl font-normal text-[#1a3646] mb-6 tracking-tight leading-tight">
-            Connect with <span className="text-white">Student Forge</span>.
+          <h1 className="text-4xl lg:text-5xl font-light text-white mb-4 tracking-tight">
+            Contact Us
           </h1>
-          <p className="text-base lg:text-lg text-[#1a3646] opacity-70 max-w-2xl leading-relaxed">
-            Reach out to our national portal team for collaborations, institutional nodes, or support.
+          <p className="text-base lg:text-lg text-white/60 max-w-2xl leading-relaxed">
+            We'd love to hear from you. Send us a message and we'll respond as soon as possible.
           </p>
         </div>
       </section>
 
-      <section className="py-16 px-6 flex justify-center">
-        <div className="w-full max-w-[1200px] grid grid-cols-1 lg:grid-cols-2 gap-12">
-          <div className="flex flex-col gap-8">
-            <div className="flex flex-col gap-2">
-              <h3 className="text-[10px] font-bold uppercase tracking-widest text-[#fbb03b]">Email</h3>
-              <p className="text-lg font-medium text-[#1a3646]">info@studentforge.in</p>
+      <section className="py-20 px-6">
+        <div className="w-full max-w-[1200px] mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+            {/* Contact Info */}
+            <div className="lg:col-span-1 space-y-8">
+              <div>
+                <h3 className="text-xl font-semibold text-[#1a3646] mb-6">Contact Information</h3>
+                <p className="text-[#1a3646]/60 text-sm leading-relaxed mb-8">
+                  Fill out the form and our team will get back to you within 24 hours.
+                </p>
+              </div>
+
+              <div className="space-y-6">
+                <a
+                  href="mailto:info@studentforge.in"
+                  className="flex items-start gap-4 group text-left"
+                >
+                  <div className="w-12 h-12 bg-[#fbb03b]/10 rounded-lg flex items-center justify-center shrink-0 group-hover:bg-[#fbb03b]/20 transition-colors">
+                    <Mail size={20} className="text-[#fbb03b]" />
+                  </div>
+                  <div>
+                    <h4 className="text-sm font-semibold text-[#1a3646] mb-1 group-hover:text-[#fbb03b] transition-colors">Email</h4>
+                    <p className="text-sm text-[#1a3646]/60">info@studentforge.in</p>
+                  </div>
+                </a>
+
+                <a
+                  href="tel:+916304218064"
+                  className="flex items-start gap-4 group text-left"
+                >
+                  <div className="w-12 h-12 bg-[#fbb03b]/10 rounded-lg flex items-center justify-center shrink-0 group-hover:bg-[#fbb03b]/20 transition-colors">
+                    <Phone size={20} className="text-[#fbb03b]" />
+                  </div>
+                  <div>
+                    <h4 className="text-sm font-semibold text-[#1a3646] mb-1 group-hover:text-[#fbb03b] transition-colors">Phone</h4>
+                    <p className="text-sm text-[#1a3646]/60">+91 6304218064</p>
+                  </div>
+                </a>
+
+                <a
+                  href="https://maps.google.com/?q=HF2R%2BCCV,+Devender+Colony,+Kompally,+Hyderabad,+Telangana+500100"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-start gap-4 group text-left"
+                >
+                  <div className="w-12 h-12 bg-[#fbb03b]/10 rounded-lg flex items-center justify-center shrink-0 group-hover:bg-[#fbb03b]/20 transition-colors">
+                    <MapPin size={20} className="text-[#fbb03b]" />
+                  </div>
+                  <div>
+                    <h4 className="text-sm font-semibold text-[#1a3646] mb-1 group-hover:text-[#fbb03b] transition-colors">Office</h4>
+                    <p className="text-sm text-[#1a3646]/60 leading-relaxed">
+                      HF2R+CCV, Devender Colony,<br />
+                      Kompally, Hyderabad,<br />
+                      Telangana 500100
+                    </p>
+                  </div>
+                </a>
+              </div>
             </div>
-            <div className="flex flex-col gap-2">
-              <h3 className="text-[10px] font-bold uppercase tracking-widest text-[#fbb03b]">Phone</h3>
-              <p className="text-lg font-medium text-[#1a3646]">+91 6304218064</p>
+
+            {/* Contact Form */}
+            <div className="lg:col-span-2">
+              <div className="bg-white border border-[#1a3646]/10 rounded-2xl p-8 lg:p-10">
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="space-y-2">
+                      <label className="text-sm font-medium text-[#1a3646]">
+                        Name <span className="text-[#fbb03b]">*</span>
+                      </label>
+                      <input
+                        type="text"
+                        name="name"
+                        value={formData.name}
+                        onChange={handleChange}
+                        required
+                        className="w-full px-4 py-3 rounded-lg border border-[#1a3646]/20 focus:border-[#fbb03b] focus:outline-none focus:ring-1 focus:ring-[#fbb03b] transition-all text-sm"
+                        placeholder="Your name"
+                      />
+                    </div>
+
+                    <div className="space-y-2">
+                      <label className="text-sm font-medium text-[#1a3646]">
+                        Email <span className="text-[#fbb03b]">*</span>
+                      </label>
+                      <input
+                        type="email"
+                        name="email"
+                        value={formData.email}
+                        onChange={handleChange}
+                        required
+                        className="w-full px-4 py-3 rounded-lg border border-[#1a3646]/20 focus:border-[#fbb03b] focus:outline-none focus:ring-1 focus:ring-[#fbb03b] transition-all text-sm"
+                        placeholder="your@email.com"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="space-y-2">
+                      <label className="text-sm font-medium text-[#1a3646]">
+                        Address <span className="text-[#fbb03b]">*</span>
+                      </label>
+                      <input
+                        type="text"
+                        name="address"
+                        value={formData.address}
+                        onChange={handleChange}
+                        required
+                        className="w-full px-4 py-3 rounded-lg border border-[#1a3646]/20 focus:border-[#fbb03b] focus:outline-none focus:ring-1 focus:ring-[#fbb03b] transition-all text-sm"
+                        placeholder="Your address"
+                      />
+                    </div>
+
+                    <div className="space-y-2">
+                      <label className="text-sm font-medium text-[#1a3646]">
+                        Phone
+                      </label>
+                      <input
+                        type="tel"
+                        name="phone"
+                        value={formData.phone}
+                        onChange={handleChange}
+                        className="w-full px-4 py-3 rounded-lg border border-[#1a3646]/20 focus:border-[#fbb03b] focus:outline-none focus:ring-1 focus:ring-[#fbb03b] transition-all text-sm"
+                        placeholder="+91 XXXXX XXXXX"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="space-y-2">
+                    <label className="text-sm font-medium text-[#1a3646]">
+                      Reason for contacting <span className="text-[#fbb03b]">*</span>
+                    </label>
+                    <input
+                      type="text"
+                      name="reason"
+                      value={formData.reason}
+                      onChange={handleChange}
+                      required
+                      className="w-full px-4 py-3 rounded-lg border border-[#1a3646]/20 focus:border-[#fbb03b] focus:outline-none focus:ring-1 focus:ring-[#fbb03b] transition-all text-sm"
+                      placeholder="How can we help you?"
+                    />
+                  </div>
+
+                  <div className="space-y-2">
+                    <label className="text-sm font-medium text-[#1a3646]">
+                      Comments
+                    </label>
+                    <textarea
+                      name="comments"
+                      value={formData.comments}
+                      onChange={handleChange}
+                      rows={4}
+                      className="w-full px-4 py-3 rounded-lg border border-[#1a3646]/20 focus:border-[#fbb03b] focus:outline-none focus:ring-1 focus:ring-[#fbb03b] transition-all text-sm resize-none"
+                      placeholder="Your message..."
+                    />
+                  </div>
+
+                  <button
+                    type="submit"
+                    className="w-full px-8 py-3 bg-[#1a3646] text-white rounded-lg font-medium text-sm hover:bg-[#2d414e] transition-colors flex items-center justify-center gap-2"
+                  >
+                    <Send size={16} />
+                    Send Message
+                  </button>
+                </form>
+              </div>
             </div>
-            <div className="flex flex-col gap-2">
-              <h3 className="text-[10px] font-bold uppercase tracking-widest text-[#fbb03b]">HQ Node</h3>
-              <p className="text-lg font-medium text-[#1a3646] leading-relaxed">
-                HF2R+CCV, Devender Colony, Kompally,<br />
-                Hyderabad, Telangana 500100
-              </p>
-            </div>
-          </div>
-          
-          <div className="w-full h-[1100px] bg-gray-50 rounded-[32px] overflow-hidden flex justify-center border border-gray-100 shadow-sm">
-            <iframe 
-              src="https://docs.google.com/forms/d/e/1FAIpQLSexG7oXTb4FzfStG3I-AdaNwlBZmr4pPQCsZZHK3lfrUupGgg/viewform?embedded=true" 
-              width="100%" 
-              height="1096" 
-              frameBorder="0" 
-              marginHeight={0} 
-              marginWidth={0}
-              className="w-full"
-            >
-              Loading…
-            </iframe>
           </div>
         </div>
       </section>

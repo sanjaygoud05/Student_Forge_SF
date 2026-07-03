@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import Image from 'next/image';
 import Footer from "@/components/Footer";
 import Link from "next/link";
+import ScrollLink from "@/components/ScrollLink";
 import {
   Lightbulb,
   Users,
@@ -68,14 +69,14 @@ export default function StartupPage() {
                 href="/contact"
                 className="inline-flex items-center gap-2 px-7 py-3.5 bg-[#fbb03b] text-[#1a3646] rounded-full font-bold text-sm hover:bg-[#e09e35] hover:scale-105 transition-all shadow-lg shadow-[#fbb03b]/20"
               >
-                Collaborate With Us
+                Contact Us
               </Link>
-              <Link
-                href="#services"
+              <ScrollLink
+                targetId="services"
                 className="inline-flex items-center gap-2 px-7 py-3.5 border border-white/20 text-white rounded-full font-bold text-sm hover:bg-white/5 hover:border-white/40 transition-all"
               >
-                Explore Services <ArrowRight size={14} />
-              </Link>
+                Know More <ArrowRight size={14} />
+              </ScrollLink>
             </div>
           </div>
 

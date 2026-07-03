@@ -36,7 +36,6 @@ export default function Home() {
 
       <QuoteSection />
       <TestimonialsSection />
-      <CTASection />
       <Footer />
     </main>
   );

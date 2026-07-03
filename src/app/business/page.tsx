@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import Image from 'next/image';
 import Footer from "@/components/Footer";
 import Link from "next/link";
+import ScrollLink from "@/components/ScrollLink";
 import {
   Users,
   Briefcase,
@@ -71,23 +72,23 @@ export default function BusinessPage() {
 
             <div className="flex flex-wrap gap-4 mb-10">
               <Link
-                href="https://platform.studentforge.in"
+                href="/contact"
                 className="px-7 py-3.5 bg-[#fbb03b] text-[#1a3646] rounded-full font-bold text-sm hover:scale-105 transition-transform shadow-lg shadow-[#fbb03b]/20"
               >
-                Hire Talent
+                Contact Us
               </Link>
-              <Link
-                href="#how-we-help"
+              <ScrollLink
+                targetId="why-partner"
                 className="px-7 py-3.5 border border-white/25 text-white rounded-full font-semibold text-sm hover:bg-white/8 hover:border-white/50 transition-all flex items-center gap-2"
               >
-                Collaborate With Us <ArrowRight size={15} />
-              </Link>
+                Know More <ArrowRight size={15} />
+              </ScrollLink>
             </div>
 
             {/* Three quick stats / info pills */}
             <div className="flex flex-wrap gap-4">
               {[
-                { icon: Users,     label: 'Access to Talent Pool' },
+                { icon: Users, label: 'Access to Talent Pool' },
                 { icon: Building2, label: 'Campus Hiring Solutions' },
                 { icon: Megaphone, label: 'Event & Branding Opportunities' },
               ].map((pill, i) => (
@@ -136,14 +137,14 @@ export default function BusinessPage() {
           {/* Individual Cards with Borders */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
-              { icon: Users,          title: 'Talent Sourcing',          desc: 'Access a pool of skilled and pre-evaluated student talent directly matched to your industry needs.' },
-              { icon: Briefcase,      title: 'Internship Programs',      desc: 'Hire interns for short-term or long-term projects with seamless compliance and tracking.' },
-              { icon: Building2,      title: 'Campus Hiring',            desc: 'Conduct placement drives and recruit top performers from targeted institutions.' },
-              { icon: CalendarDays,   title: 'Event Collaboration',      desc: 'Sponsor events and hackathons to build authentic brand presence.' },
-              { icon: Megaphone,      title: 'Employer Branding',        desc: 'Strengthen your brand visibility among students and campuses with targeted campaigns.' },
-              { icon: Settings,       title: 'Custom Solutions',         desc: 'Tailored hiring architectures designed specifically for your unique requirements.' },
-              { icon: Lightbulb,      title: 'Innovation Challenges',    desc: 'Run problem statements and hackathons for students to crowdsource solutions.' },
-              { icon: HeartHandshake, title: 'CSR & Impact',             desc: 'Collaborate on CSR initiatives and social impact programs to empower the next generation.' },
+              { icon: Users, title: 'Talent Sourcing', desc: 'Access a pool of skilled and pre-evaluated student talent directly matched to your industry needs.' },
+              { icon: Briefcase, title: 'Internship Programs', desc: 'Hire interns for short-term or long-term projects with seamless compliance and tracking.' },
+              { icon: Building2, title: 'Campus Hiring', desc: 'Conduct placement drives and recruit top performers from targeted institutions.' },
+              { icon: CalendarDays, title: 'Event Collaboration', desc: 'Sponsor events and hackathons to build authentic brand presence.' },
+              { icon: Megaphone, title: 'Employer Branding', desc: 'Strengthen your brand visibility among students and campuses with targeted campaigns.' },
+              { icon: Settings, title: 'Custom Solutions', desc: 'Tailored hiring architectures designed specifically for your unique requirements.' },
+              { icon: Lightbulb, title: 'Innovation Challenges', desc: 'Run problem statements and hackathons for students to crowdsource solutions.' },
+              { icon: HeartHandshake, title: 'CSR & Impact', desc: 'Collaborate on CSR initiatives and social impact programs to empower the next generation.' },
             ].map((feature, i) => (
               <div key={i} className="bg-[#f8f9fa] p-10 flex flex-col group hover:bg-white transition-colors duration-300 border-2 border-[#1a3646]/10 rounded-2xl">
                 <div className="w-14 h-14 rounded-2xl bg-white border border-[#1a3646]/10 flex items-center justify-center text-[#1a3646] mb-8 group-hover:border-[#fbb03b] group-hover:text-[#fbb03b] group-hover:shadow-md transition-all duration-300 shadow-sm">
@@ -160,7 +161,7 @@ export default function BusinessPage() {
       </section>
 
       {/* ─── WHY PARTNER WITH US ───────────────────────────────────── */}
-      <section className="py-24 px-6 bg-white">
+      <section id="why-partner" className="py-24 px-6 bg-white">
         <div className="w-full max-w-[1100px] mx-auto flex flex-col lg:flex-row gap-16 items-center">
           <div className="flex-1 text-left">
             <h2 className="text-3xl lg:text-4xl font-bold text-[#1a3646] mb-6">
@@ -174,11 +175,11 @@ export default function BusinessPage() {
 
           <div className="flex-[1.5] w-full flex flex-col gap-4">
             {[
-              { icon: Star,         title: 'High Quality Student Talent', desc: 'Pre-vetted and industry-ready candidates.' },
-              { icon: Zap,          title: 'Streamlined Hiring Process',  desc: 'End-to-end support from sourcing to onboarding.' },
-              { icon: BarChart3,    title: 'Cost-Effective Solutions',    desc: 'Optimize your hiring budget without compromising quality.' },
-              { icon: Network,      title: 'Strong Campus Presence',      desc: 'Build your brand across top-tier institutions.' },
-              { icon: TrendingUp,   title: 'Long-term Talent Pipeline',   desc: 'Secure future leaders for your organization.' },
+              { icon: Star, title: 'High Quality Student Talent', desc: 'Pre-vetted and industry-ready candidates.' },
+              { icon: Zap, title: 'Streamlined Hiring Process', desc: 'End-to-end support from sourcing to onboarding.' },
+              { icon: BarChart3, title: 'Cost-Effective Solutions', desc: 'Optimize your hiring budget without compromising quality.' },
+              { icon: Network, title: 'Strong Campus Presence', desc: 'Build your brand across top-tier institutions.' },
+              { icon: TrendingUp, title: 'Long-term Talent Pipeline', desc: 'Secure future leaders for your organization.' },
             ].map((item, i) => (
               <div
                 key={i}
@@ -210,10 +211,10 @@ export default function BusinessPage() {
 
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
             {[
-              { stat: '5000+',  label: 'Students Trained' },
-              { stat: '300+',   label: 'Companies Partnered' },
-              { stat: '1200+',  label: 'Internships Completed' },
-              { stat: '450+',   label: 'Placements Facilitated' },
+              { stat: '2500+', label: 'Students Trained' },
+              { stat: '10+', label: 'Companies Partnered' },
+              { stat: '250+', label: 'Internships Completed' },
+              { stat: '10+', label: 'Placements Facilitated' },
             ].map((item, i) => (
               <div
                 key={i}

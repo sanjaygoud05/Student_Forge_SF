@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import Image from 'next/image';
 import Footer from "@/components/Footer";
 import Link from "next/link";
+import ScrollLink from "@/components/ScrollLink";
 import {
   Lightbulb,
   Users,
@@ -73,17 +74,17 @@ export default function InstitutionsPage() {
 
             <div className="flex flex-wrap gap-4">
               <Link
-                href="https://platform.studentforge.in"
+                href="/contact"
                 className="px-7 py-3.5 bg-[#fbb03b] text-[#1a3646] rounded-full font-bold text-sm hover:scale-105 transition-transform shadow-lg shadow-[#fbb03b]/20"
               >
-                Partner With Us
+                Contact Us
               </Link>
-              <Link
-                href="#programs"
+              <ScrollLink
+                targetId="why-partner"
                 className="px-7 py-3.5 border border-white/25 text-white rounded-full font-semibold text-sm hover:bg-white/8 hover:border-white/50 transition-all flex items-center gap-2"
               >
-                Explore Programs <ArrowRight size={15} />
-              </Link>
+                Know More <ArrowRight size={15} />
+              </ScrollLink>
             </div>
           </div>
 
@@ -192,7 +193,7 @@ export default function InstitutionsPage() {
       </section>
 
       {/* ─── WHY COLLEGES PARTNER ─────────────────────────────────── */}
-      <section className="py-24 px-6 bg-white">
+      <section id="why-partner" className="py-24 px-6 bg-white">
         <div className="w-full max-w-[1100px] mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl lg:text-4xl font-bold text-[#1a3646] mb-3">
