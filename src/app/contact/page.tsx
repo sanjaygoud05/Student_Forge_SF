@@ -2,9 +2,11 @@
 
 import Footer from "@/components/Footer";
 import { useState } from "react";
-import { Mail, Phone, MapPin, Send } from "lucide-react";
+import { useRouter } from "next/navigation";
+import { Mail, Phone, MapPin, Send, ArrowLeft } from "lucide-react";
 
 export default function ContactPage() {
+  const router = useRouter();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -42,6 +44,13 @@ ${formData.comments || 'N/A'}`;
     <main className="flex-1 bg-white">
       <section className="relative pt-32 pb-20 px-6 bg-[#1a3646]">
         <div className="relative z-10 w-full max-w-[1200px] mx-auto">
+          <button
+            onClick={() => router.back()}
+            className="flex items-center gap-2 text-white/80 hover:text-white transition-colors mb-6 group"
+          >
+            <ArrowLeft size={20} className="group-hover:-translate-x-1 transition-transform" />
+            <span className="text-sm">Back</span>
+          </button>
           <h1 className="text-4xl lg:text-5xl font-light text-white mb-4 tracking-tight">
             Contact Us
           </h1>
